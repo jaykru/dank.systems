@@ -10,3 +10,10 @@ pom.xml.asc
 /.nrepl-port
 .hgignore
 .hg/
+/.DS_Store
+/.calva/
+/.clj-kondo/
+/.idea/
+/.lsp/
+/dank.systems.iml
+/out/
