@@ -1,0 +1,100 @@
+h1, h2, h3 {
+    margin: 0px 0px 15px 0px;
+    /* padding: 5px 0px 0px 0px; */
+    line-height: 100%;
+}
+
+
+p,ul,li {
+    margin: 5px 0px 5px 0px;
+}
+
+p,ul {
+    max-width: 65%;
+}
+
+
+img {
+    margin: 12px 0px 12px 0px;
+}
+
+ul {
+    padding-left: 18px;
+}
+
+html {
+    background-color: rgb(255,255,234);
+    font-size: 100%;
+    font-family: sans-serif
+}
+
+body {
+    color: #333;
+}
+
+a {
+    color: #111;
+    text-decoration: none;
+    border-bottom: 1px solid #555;
+}
+
+code {
+    margin: 1px 1px 0px 0px;
+    background-color: rgb(255,255,234);
+    color: #111;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #555;
+    border-top: 1px solid #555;
+    border-left: 1px solid #555;
+    border-right: 1px solid #555;
+}
+
+
+#jaykruer {
+    background-color: #c54c4c;
+    color: #ffffff;
+    text-decoration: solid;
+    border-bottom: 1px solid #555;
+    border-top: 1px solid #555;
+    border-left: 1px solid #555;
+    border-right: 1px solid #555;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-family: Futura;
+}
+
+nav {
+    padding-bottom: 10px;
+}
+
+nav a {
+    margin-right: 5px;
+    margin-left: 2px;
+}
+
+#outer-nav {
+    width:100%;
+    overflow:scroll;
+}
+
+#inner-nav {
+    min-width: 400px;
+}
+
+#logo {
+    display: inline
+}
+
+@media (max-width: 400px) {
+    #outer-nav::after {
+	content: " pst! scroll me ";
+	font-family: Futura;
+	font-size: 40%;
+    }
+
+}
