@@ -10,7 +10,8 @@
                  [ring "1.8.2"]
                  [optimus "2025.01.19.2"]
                  [optimus-img-transform "0.3.1"]
-                 [com.github.flow-storm/flow-storm-dbg "4.2.1"]]
+                 [com.github.flow-storm/flow-storm-dbg "4.2.1"]
+                 [org.clojure/core.async "1.7.701"]]
   :ring {:handler systems.dank.core/server}
   :profiles {:dev {:plugins [[lein-ring "0.12.5"]]}}
   :repl-options {:init-ns systems.dank.core}

@@ -5,23 +5,30 @@ title: about
 ## quick facts
 **who**: jay kruer.
 
-**what** (i am doing): _an undergraduate thesis_: 
-    - topic for wonks: _studying the use of category-theoretic gluing for metatheory of lambda calculi_
-    - topic for well-adjusted people: _using fancy math to better understand how programming languages work_
+**what** (i am doing): building a [deep learning framework](https://github.com/tenstorrent/tt-metal/tree/main/tt-train) and
+training LLMs at [tenstorrent](tenstorrent.com). we make chips that make deep
+learning go brrrr on an open source sw stack at better perf/$ than our
+competitors. here's a brief explanation gesturing at how we're able to do that:
+if you're familiar with TPUs, you can think of it as what might happen if you
+took a TPU and exploded its humongous SRAM and matmul engine over a sea of tiny
+tiles which can talk to each other. many tiny SRAM strong! 🦧
 
-**why**: gluing allows for a more conceptual take on the famed technique of
-_logical relations_ in proofs of metatheoretic results. not just that, this
-technique scales more directly to complicated problems than the more ad-hoc
-techniques used in the past.
+**when**: now through ??? <span style="font-size: 5%;">[you tell me](/contact.html)</span>
 
-**when**: now through december 2021.
 
-**where**: reed college, portland, oregon
+**where**: bend, oregon.
 
 <br>
 
 ### before
-i used to work for some companies on proven-correct software and
-hardware designs. i also used to work on mechanized metatheory
-of type theory. you can read about my past in my
-[resume](/include/resume.pdf)!
+i've worked as a formal verification engineer at tenstorrent and intel, and
+before that as a research engineer at sifive.
+
+i studied math/cs at reed college, where i wrote my
+[thesis](https://github.com/jaykru/thesis) on the category-theoretic semantics
+of lambda calculus, specifically as applied to the open normalization problem
+for the simply-typed lambda calculus. it's pretty wild stuff, and i went to
+great pains to make it approachable to someone with a cursory background in
+programming language theory. check it out!
+
+check out my [resume](/include/resume.pdf) for more.
