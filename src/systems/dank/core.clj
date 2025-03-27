@@ -57,12 +57,11 @@
         [:main {:role "main"}
          [:h1 (:title (:metadata page))]
          (:html page)]]]
-        [:footer
-         [:img {:src "/public/clj_alien_rainbow.webp" :width 80 :height 54}]
-         [:img {:src "/public/hosted_on_my_pc.webp" :width 80 :height 54}]
-         [:img {:src "/public/powered_by_void.webp" :width 80 :height 54}]
-         [:img {:src "/public/ai_buddy.webp" :width 80 :height 54}]
-         ])))
+       [:footer
+        [:img {:src "/public/clj_alien_rainbow.webp" :width 80 :height 54}]
+        [:img {:src "/public/hosted_on_my_pc.webp" :width 80 :height 54}]
+        [:img {:src "/public/powered_by_void.webp" :width 80 :height 54}]
+        [:img {:src "/public/ai_buddy.webp" :width 80 :height 54}]])))
 
 (defn format-pages [m]
   (let [html-keys (keys m)
