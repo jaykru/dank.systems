@@ -40,6 +40,8 @@ body {
 
 #main-container {
     flex-grow: 1; /* Allow main content to grow and push footer down */
+    padding-left: 20px; /* Add some space on the left */
+    padding-right: 20px; /* Add some space on the right */
 }
 
 a {
