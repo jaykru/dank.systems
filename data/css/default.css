@@ -52,6 +52,11 @@ a {
     /* padding: 10px 0; */
 }
 
+footer {
+  padding-left: 20px; /* Add some space on the left */
+  padding-right: 20px; /* Add some space on the right */
+}
+
 footer img {
   margin-right: 5px; /* or padding-right */
 }
