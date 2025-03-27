@@ -25,7 +25,7 @@ ul {
 html {
     background-color: rgb(255,255,234);
     font-size: 100%;
-    font-family: sans-serif
+    font-family: Montserrat;
 }
 
 body {
@@ -36,6 +36,14 @@ a {
     color: #111;
     text-decoration: none;
     border-bottom: 1px solid #555;
+}
+
+footer img {
+  margin-right: 5px; /* or padding-right */
+}
+
+footer img:last-child {
+  margin-right: 0; /* prevent extra space after the last image */
 }
 
 code {
@@ -79,7 +87,6 @@ nav a {
 
 #outer-nav {
     width:100%;
-    overflow:scroll;
 }
 
 #inner-nav {
@@ -91,10 +98,10 @@ nav a {
 }
 
 @media (max-width: 400px) {
+    #outer-nav { overflow:scroll; }
     #outer-nav::after {
 	content: " pst! scroll me ";
 	font-family: Futura;
 	font-size: 40%;
     }
-
 }
