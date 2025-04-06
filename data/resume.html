@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jay kruer's resumé</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        .content {
+            /* Ensure the content takes the full height of the page */
+            /* height: 100vh; */
+            /* display: flex; */
+            /* justify-content: center; */
+            /* align-items: center; */
+            /* transform: scale(0.92, 0.92);
+            transform-origin: top left; */
+        }
+        body {
+            font-family: 'Optima', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            width: 100%;
+            max-width: 8.5in;
+            /* max-height: 11in; */
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+        }
+        .section h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 2px;
+            margin-bottom: 5px;
+        }
+        .experience-header-container {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 2px;
+            margin-bottom: 5px;
+        }
+        .experience-header-container h2 {
+            margin-top: 0;
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .experience {
+            margin-top: 0;
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .header p {
+            margin: 5px 0;
+        }
+        h3 {
+            margin-top: 20px;
+        }
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+        .row .section {
+            flex: 1;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 10px;
+            margin: 0;
+        }
+        li::before {
+            content: "•";
+            padding-right: 4px;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            .section {
+                padding: 10px;
+            }
+            .row {
+                flex-direction: column;
+            }
+        }
+        a {
+            color: #6b8ba4;
+            text-decoration: none;
+        }
+        .experience h3 {
+            padding-top: 0px;
+            margin-bottom: 2px;
+        }
+        .experience p {
+            margin: 2px 0;
+        }
+        .experience ul {
+            margin-top: 4px;
+        }
+        .section h3 {
+            margin-top: 10px;
+            margin-bottom: 2px;
+        }
+        .section p {
+            margin: 2px 0;
+        }
+        .section p strong {
+            margin-right: 4px;
+        }
+        #projects-list {
+            margin-top: 10px;
+        }
+        .project-header-container {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 2px;
+            margin-bottom: 5px;
+        }
+        .project-header-container h2 {
+            margin-top: 0;
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        #download-pdf-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            z-index: 10; /* Ensure it's above other content */
+        }
+        /* Style adjustments for PDF generation */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                width: 8.5in;
+                height: 11in;
+                margin: 0;
+                padding: 0; /* Adjust padding as needed for print */
+                border: none;
+                box-shadow: none;
+            }
+            #download-pdf-button {
+                display: none; /* Hide button in print view/PDF */
+            }
+            /* Add any other print-specific styles */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg id="download-pdf-button" height="24" width="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+        </svg>
+        <div class="content">
+        <div class="header">
+            <h1>Jay Kruer</h1>
+            <p><a href="https://signal.org">
+                <svg height="16" width="16" viewBox="0 0 24 24" style="vertical-align: text-bottom;">
+                    <path fill="currentColor" d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.11-.27c1.12.45 2.33.69 3.59.69.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C10.29 22 2 13.71 2 3.5 2 2.95 2.45 2.5 3 2.5H6.5c.55 0 1 .45 1 1 0 1.26.24 2.47.69 3.59.14.34.07.73-.27 1.11l-2.2 2.2z"/>
+                </svg> 859-957-9065
+            </a>
+                • <a href="mailto:j@dank.systems">
+                    <svg height="16" width="16" viewBox="0 0 24 24" style="vertical-align: text-bottom;">
+                        <path fill="currentColor" d="M12 12.713L0 5.25V19a2 2 0 002 2h20a2 2 0 002-2V5.25l-12 7.463zM12 10.287L24 3H0l12 7.287z"/>
+                    </svg> j@dank.systems
+                </a> 
+                • <a href="https://github.com/jaykru"><svg height="16" width="16" viewBox="0 0 16 16" style="vertical-align: text-bottom;"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> jaykru</a> 
+                • <a href="https://www.linkedin.com/in/jay-kruer-9215341b1"><svg height="16" width="16" viewBox="0 0 16 16" style="vertical-align: text-bottom;"><path fill="currentColor" d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm2.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg> linkedin</a></p>
+        </div>
+        <div class="row">
+            <div class="section" id="experience">
+                <div class="experience-header-container">
+                    <h2 id="experience-header">Experience</h2>
+                </div>
+                <div id="experience-list">
+                    <!-- Experiences will be inserted here by JavaScript -->
+                </div>
+            </div>
+            <div class="section">
+                <div class="project-header-container">
+                    <h2 id="projects-header">Projects</h2>
+                    <!-- Checkboxes will be inserted here by JS -->
+                </div>
+                 <ul class="projects" id="projects-list">
+                    <!-- Projects will be inserted here by JavaScript -->
+                 </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Skills</h2>
+            <ul>
+                Reinforcement Learning • Diffusion models • LLMs • PyTorch • Julia • C++ • Python
+                <br> Formal Verification • Pure math • Coq • Rust • SystemVerilog • Common Lisp • Haskell • OCaml
+            </ul>
+        </div>
+
+        <div class="row">
+            <div class="section">
+                <h2>Education</h2>
+                <h3>Reed College</h3>
+                <p><em>Portland, OR</em></p>
+                <p>B.A. in Mathematics and Computer Science &vert; 2021</p>
+                <p>
+                    <strong>Thesis:</strong> <em>The Way of Glue: An Invitation to the Categorical Metatheory of Lambda Calculi</em>
+                    <br>
+                    <strong>Advisors: </strong>Angélica Osorno and Jim Fix
+                </p>
+            </div>
+        </div>
+    </div>    
+</div>
+</body>
+<script>
+    const projects = [
+        {
+            name: "tt-metal",
+            url: "https://github.com/tenstorrent/tt-metal",
+            additions: 4977,
+            deletions: 390,
+            categories: ["systems", "ai"],
+            description: "Training framework + PyTorch-like kernel library for Tenstorrent's AI accelerators <span style=\"background-color: #ff4d4d; color: white; padding: 2px 4px; font-size: 0.8em;\">new!</span> now includes tt-train"
+        },
+        {
+            name: "mc-coq",
+            url: "https://github.com/jaykru/mc-coq",
+            additions: 832,
+            deletions: 451,
+            categories: ["formal-methods", "ai"],
+            description: 'A mechanized partial correctness proof of the LTL <a href="https://www.cs.cmu.edu/~emc/papers/Papers%20In%20Refereed%20Journals/Bounded%20Model%20Checking%20Using%20Satisfiablility%20Solving.pdf">bounded model checking algorithm</a> in Coq'
+        },
+        {
+            name: "torch-diffusion",
+            url: "https://github.com/jaykru/torch-diffusion",
+            additions: 7246,
+            deletions: 5443,
+            categories: ["ai"],
+            description: 'A minimum viable implementation of the diffusion algorithm for image synthesis as found in <a href="https://arxiv.org/abs/2006.11239">Ho et al.</a>, trained on Pokémon images to generate novel Pokémon: <img style="vertical-align: middle; width:auto; height:30px" src="public/regisomething.png">'
+        },
+        {
+            name: "gputudes.jl", 
+            url: "https://github.com/jaykru/gputudes.jl",
+            additions: 383,
+            deletions: 23,
+            categories: ["ai"],
+            description: "Sasha Rush's GPU programming tutorials implemented in Julia/Apple's Metal GPGPU stack"
+        },
+        {
+            name: "barnes-the-hutt",
+            url: "https://github.com/jaykru/barnes-the-hutt", 
+            additions: 1100,
+            deletions: 82,
+            categories: ["systems"],
+            description: "Fast, parallel Barnes-Hut implementation for N-body simulation in Common Lisp."
+        },
+        {
+            name: "concolic.py",
+            url: "https://github.com/jaykru/concolic",
+            additions: 575,
+            deletions: 0,
+            categories: ["formal-methods", "systems"],
+            description: "A Python implementation of concolic execution for an idealized imperative language, using z3py for symbolic execution."
+        },
+        {
+            name: "exit-chess",
+            url: "https://github.com/jaykru/exit-chess",
+            additions: 15694,
+            deletions: 615,
+            categories: ["ai", "systems"],
+            description: 'A root-parallel C++ implementation of the Expert Iteration algorithm proposed by <a href="https://arxiv.org/abs/1705.08439">Anthony et al.</a> — generic in your choice of MDP, applied here to chess with connections to the lichess.org API for interactive play'
+        },
+        {
+            name: "thesis",
+            url: "https://github.com/jaykru/thesis",
+            additions: 47097,
+            deletions: 6394,
+            categories: ["thesis"],
+            description: "My bachelor's thesis: the thesis develops functorial semantics à la Lawvere, and ultimately demonstrates a proof by Artin gluing of open normalization for the simply typed lambda calculus"
+        },
+        {
+            name: "sifive/kami",
+            url: "https://github.com/sifive/kami",
+            additions: 829,
+            deletions: 742,
+            categories: ["formal-methods", "systems"],
+            description: "A Coq DSL for verified hardware design, originally developed at MIT and continued at SiFive"
+        },
+        {
+            name: "sifive/stdlibkami",
+            url: "https://github.com/sifive/stdlibkami",
+            additions: 2525,
+            deletions: 2062,
+            categories: ["formal-methods", "systems"],
+            description: "A library of formally specified and verified hardware components for RISC-V CPU designs in Kami, a Coq DSL for verified hardware design"
+        },
+        {
+            name: "stlc-as2",
+            url: "https://github.com/jaykru/stlc-as2",
+            additions: 1868,
+            deletions: 1043,
+            categories: ["formal-methods"],
+            description: "A mechanically-checked formal proof of type safety for the simply typed lambda calculus in Coq"
+        }
+    ];
+
+    function createProjectEntry(project) {
+        return `
+            <li category="${project.categories.join(',')}">
+                <a href="${project.url}" style="text-decoration: none; color: #6b8ba4;">
+                    ${project.name}
+                    <span style="font-size: 12px; display: inline-block; padding: 0 6px; margin: 0 0px; border-radius: 3px; background-color: #dafbe1; color: #2cbe4e;">+${project.additions.toLocaleString()}</span>
+                    <span style="font-size: 12px; display: inline-block; padding: 0 6px; margin: 0 0px; border-radius: 3px; background-color: #ffdce0; color: #cb2431;">−${project.deletions.toLocaleString()}</span>
+                </a>
+                <span style="display: block; margin-left: 1em; text-indent: -1em;">
+                    ↪ <i>${project.description}</i>
+                </span>
+            </li>
+        `;
+    }
+
+    function renderProjects(projects_json) {
+        const projectsList = document.getElementById('projects-list');
+        projectsList.innerHTML = projects_json.map(createProjectEntry).join('');
+    }
+
+    function filterProjects(categories, projects_json) {
+        return projects_json.filter(project => 
+            categories.some(category => project.categories.includes(category))
+        );
+    }
+
+    const displayed_projects = filterProjects(['thesis', 'ai', 'systems', 'formal-methods'], projects);
+    renderProjects(displayed_projects);
+    
+    const experiences = [
+        {
+            place: "Tenstorrent",
+            title: "<span style='font-size:10px'>Formal Verification Engineer</span> ↝ Senior SWE",
+            period: "5/2023 – Present",
+            category: "tt",
+            achievements: [
+                "Implemented DL layers and training optimizations for Llama 3 training as part of our in-house C++ training framework, tt-train.",
+                "Developed new kernels and contributed generality and performance improvements to the Tenstorrent AI kernel library with a focus on data movement operations",
+                "Raised generality of, e.g., our concat operation from 79% to 100% while improving performance with respect to traces of popular torch models",
+                "Developed formal correctness proofs for the Ascalon CPU branch predictor and dispatch units"
+            ]
+        },
+        {
+            place: "Intel",
+            title: "Formal Verification Engineer",
+            period: "1/2021 – 5/2023",
+            category: "intel",
+            achievements: [
+                "Formally verified RTL modules for a high performance CPU core project",
+                "Produced full correctness proofs and discovered critical bugs which had evaded constrained random testing efforts, achieving 100% design coverage"
+            ]
+        },
+        {
+            place: "SiFive",
+            title: "Research Engineer, Formal Methods",
+            period: "2019",
+            category: "sifive",
+            achievements: [
+                "Development and performance engineering of proof-finding tactic programs",
+                "RTL design, specification, and formal verification of a from-scratch RISC-V CPU core"
+            ]
+        },
+        {
+            place: "Northeastern University",
+            title: "Visiting Scholar",
+            period: "2018 – 2019",
+            category: "neu",
+            achievements: [
+                "Contributed to a type theory research project focused on a language modeling the core semantics of Rust and in particular its borrow-checker"
+            ]
+        }
+    ];
+
+    function createExperienceEntry(experience) {
+        return `
+            <div class="experience" category="${experience.category}">
+                <h3>${experience.place}</h3>
+                <p>${experience.title} &vert; ${experience.period}</p>
+                <ul>
+                    ${experience.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+    }
+
+    function renderExperiences(experiences_json) {
+        const experienceList = document.getElementById('experience-list');
+        experienceList.innerHTML = experiences_json.map(createExperienceEntry).join('');
+    }
+
+    function filterExperiences(categories, experiences_json) {
+        return experiences_json.filter(experience => 
+            categories.includes(experience.category)
+        );
+    }
+
+    // Initial render with filtering
+    const displayed_experiences = filterExperiences(["tt", "intel", "sifive", "neu"], experiences);
+    renderExperiences(displayed_experiences);
+    // Create and manage category checkboxes
+    const experienceHeaderContainer = document.querySelector('.experience-header-container');
+    const experienceHeader = document.getElementById('experience-header');
+    const allCategories = [...new Set(experiences.map(exp => exp.category))];
+    const initialCategories = ["tt", "intel", "sifive", "neu"];
+
+    // Generate checkbox elements with pipe separators
+    function generateCategoryCheckboxes() {
+        return allCategories.map(category => `
+            <label style="cursor: pointer; margin-right: 2px; font-size: 0.8em; white-space: nowrap;">
+                <input type="checkbox" value="${category}" 
+                    ${initialCategories.includes(category) ? 'checked' : ''}>
+                ${category.toUpperCase()}
+            </label>
+        `).join(' ');
+    }
+    // Insert checkboxes into the container, after the H2
+    experienceHeaderContainer.insertAdjacentHTML('beforeend', `
+        <span id="category-filters" style="display: none; font-size: 0.8em; margin-left: 15px;">
+            ${generateCategoryCheckboxes()}
+        </span>
+    `);
+
+    // Toggle checkboxes on header click
+    experienceHeader.style.cursor = 'pointer';
+    const checkboxContainer = document.getElementById('category-filters');
+    
+    experienceHeader.addEventListener('click', (e) => {
+        // Only trigger if clicking directly on the header text (H2)
+        if (e.target.tagName === 'H2') { 
+            checkboxContainer.style.display = checkboxContainer.style.display === 'none' 
+                ? 'inline-block'
+                : 'none';
+        }
+    });
+
+    // Update experiences when checkboxes change
+    document.addEventListener('change', (e) => {
+        if (e.target.matches('input[type="checkbox"]')) {
+            const selectedCategories = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+                                           .map(checkbox => checkbox.value);
+            const filtered = filterExperiences(selectedCategories, experiences);
+            renderExperiences(filtered);
+        }
+    });
+    
+    // --- Project Filtering Logic ---
+    const projectHeader = document.getElementById('projects-header');
+    const allProjectCategories = [...new Set(projects.flatMap(proj => proj.categories))];
+
+    // Generate project checkbox elements with pipe separators
+    function generateProjectCategoryCheckboxes() {
+        return allProjectCategories.map(category => `
+            <label style="cursor: pointer; margin-right: 2px; font-size: 0.8em; white-space: nowrap;">
+                <input type="checkbox" class="project-category-filter" value="${category}" checked>
+                ${category.toUpperCase()}
+            </label>
+        `).join(' ');
+    }
+
+    // Insert project checkboxes into the container, after the H2
+    const projectHeaderContainer = projectHeader.parentElement;
+    projectHeaderContainer.insertAdjacentHTML('beforeend', `
+        <span id="project-category-filters" style="display: none; font-size: 0.8em; margin-left: 15px;">
+            ${generateProjectCategoryCheckboxes()}
+        </span>
+    `);
+
+    // Toggle project checkboxes on header click
+    projectHeader.style.cursor = 'pointer';
+    const projectCheckboxContainer = document.getElementById('project-category-filters');
+
+    projectHeader.addEventListener('click', (e) => {
+        // Only trigger if clicking directly on the header text (H2)
+        if (e.target.tagName === 'H2') {
+             projectCheckboxContainer.style.display = projectCheckboxContainer.style.display === 'none'
+                ? 'inline-block'
+                : 'none';
+        }
+    });
+
+    // Update projects when checkboxes change
+    document.addEventListener('change', (e) => {
+        if (e.target.matches('input.project-category-filter[type="checkbox"]')) {
+            const selectedCategories = Array.from(document.querySelectorAll('input.project-category-filter:checked'))
+                                           .map(checkbox => checkbox.value);
+            // If no categories are selected, show all projects
+            const projectsToRender = selectedCategories.length > 0 
+                ? filterProjects(selectedCategories, projects) 
+                : projects;
+            renderProjects(projectsToRender);
+        }
+    });
+    
+    // Initial render for projects with all categories selected
+    renderProjects(projects); 
+
+    // --- PDF Download Logic ---
+    document.getElementById('download-pdf-button').addEventListener('click', () => {
+        const { jsPDF } = window.jspdf;
+        const downloadButton = document.getElementById('download-pdf-button');
+        // Select the inner content div for rendering
+        const contentToCapture = document.querySelector('.content'); 
+        const containerElement = document.querySelector('.container'); // For width reference
+
+        // Hide the button before capture
+        downloadButton.style.display = 'none';
+
+        const pdfWidth = 8.5; // inches
+        const pdfHeight = 11; // inches
+        const pdf = new jsPDF({
+            orientation: 'portrait',
+            unit: 'in',
+            format: [pdfWidth, pdfHeight]
+        });
+
+        console.log('Starting PDF generation with pdf.html...');
+
+        pdf.html(contentToCapture, {
+            callback: function (doc) {
+                console.log('PDF generation complete. Saving...');
+                // Show the button again after capture/saving
+                downloadButton.style.display = 'block';
+                doc.save('jay_kruer_resume.pdf');
+            },
+            // Margin order: top, left, bottom, right. Units match document units ('in').
+            // Let's add a small margin around the content within the PDF page.
+            margin: [0.25, 0.25, 0.25, 0.25], 
+            autoPaging: 'text', // Enable auto-paging if content exceeds one page
+            // Target width in PDF units ('in'). Adjust for margins.
+            width: pdfWidth - 0.5, // 8.5in page width - 0.25in left margin - 0.25in right margin
+            // The width of the browser window jspdf should simulate for rendering (pixels). 
+            // Use the container's actual width for accurate layout calculation.
+            windowWidth: containerElement.scrollWidth, // Use scrollWidth for potentially wider content
+            html2canvas: {
+                scale: 2, // Improve resolution
+                useCORS: true,
+                logging: true // Enable html2canvas logs for debugging
+                // Ensure elements with background colors render correctly
+                // backgroundColor: null // Use null to try and capture existing background
+            },
+             x: 0.25, // Start rendering after the left margin
+             y: 0.25  // Start rendering after the top margin
+        }).catch(err => { 
+            console.error("Error generating PDF:", err);
+            // Ensure button is visible even if there's an error
+            downloadButton.style.display = 'block';
+        });
+    });
+</script>
+</html>
