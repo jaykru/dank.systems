@@ -529,49 +529,53 @@
     document.getElementById('download-pdf-button').addEventListener('click', () => {
         const { jsPDF } = window.jspdf;
         const downloadButton = document.getElementById('download-pdf-button');
-        // Select the inner content div for rendering
-        const contentToCapture = document.querySelector('.content'); 
-        const containerElement = document.querySelector('.container'); // For width reference
+        const contentToCapture = document.querySelector('.container'); // Capture the container
 
         // Hide the button before capture
         downloadButton.style.display = 'none';
 
-        const pdfWidth = 8.5; // inches
-        const pdfHeight = 11; // inches
-        const pdf = new jsPDF({
-            orientation: 'portrait',
-            unit: 'in',
-            format: [pdfWidth, pdfHeight]
-        });
+        html2canvas(contentToCapture, { 
+            scale: 2, // Increase scale for better resolution
+            useCORS: true // If you have external images/fonts
+        }).then(canvas => {
+            // Show the button again after capture
+            downloadButton.style.display = 'block';
 
-        console.log('Starting PDF generation with pdf.html...');
+            const imgData = canvas.toDataURL('image/png');
+            const pdfWidth = 8.5; // inches
+            const pdfHeight = 11; // inches
+            const pdf = new jsPDF({
+                orientation: 'portrait',
+                unit: 'in',
+                format: [pdfWidth, pdfHeight]
+            });
 
-        pdf.html(contentToCapture, {
-            callback: function (doc) {
-                console.log('PDF generation complete. Saving...');
-                // Show the button again after capture/saving
-                downloadButton.style.display = 'block';
-                doc.save('jay_kruer_resume.pdf');
-            },
-            // Margin order: top, left, bottom, right. Units match document units ('in').
-            // Let's add a small margin around the content within the PDF page.
-            margin: [0.25, 0.25, 0.25, 0.25], 
-            autoPaging: 'text', // Enable auto-paging if content exceeds one page
-            // Target width in PDF units ('in'). Adjust for margins.
-            width: pdfWidth - 0.5, // 8.5in page width - 0.25in left margin - 0.25in right margin
-            // The width of the browser window jspdf should simulate for rendering (pixels). 
-            // Use the container's actual width for accurate layout calculation.
-            windowWidth: containerElement.scrollWidth, // Use scrollWidth for potentially wider content
-            html2canvas: {
-                scale: 2, // Improve resolution
-                useCORS: true,
-                logging: true // Enable html2canvas logs for debugging
-                // Ensure elements with background colors render correctly
-                // backgroundColor: null // Use null to try and capture existing background
-            },
-             x: 0.25, // Start rendering after the left margin
-             y: 0.25  // Start rendering after the top margin
-        }).catch(err => { 
+            const contentWidth = canvas.width;
+            const contentHeight = canvas.height;
+
+            // Calculate the aspect ratios
+            const pdfRatio = pdfWidth / pdfHeight;
+            const contentRatio = contentWidth / contentHeight;
+
+            let finalWidth, finalHeight, offsetX = 0, offsetY = 0;
+
+            // Scale the image to fit within the PDF page dimensions
+            if (contentRatio > pdfRatio) {
+                // Content is wider than PDF page aspect ratio
+                finalWidth = pdfWidth;
+                finalHeight = pdfWidth / contentRatio;
+                offsetY = (pdfHeight - finalHeight) / 2; // Center vertically
+            } else {
+                // Content is taller than PDF page aspect ratio or perfectly matches
+                finalHeight = pdfHeight;
+                finalWidth = pdfHeight * contentRatio;
+                offsetX = (pdfWidth - finalWidth) / 2; // Center horizontally
+            }
+
+
+            pdf.addImage(imgData, 'PNG', offsetX, offsetY, finalWidth, finalHeight);
+            pdf.save('jay_kruer_resume.pdf');
+        }).catch(err => {
             console.error("Error generating PDF:", err);
             // Ensure button is visible even if there's an error
             downloadButton.style.display = 'block';
