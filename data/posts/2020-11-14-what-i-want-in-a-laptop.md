@@ -1,6 +1,7 @@
 ---
 title: what i want in a laptop
 author: jay kruer
+date: 2020-11-14
 ---
 
 lately i've been thinking about the state of personal computing. with
@@ -21,7 +22,7 @@ offensive. In a way, it's an extension of the iOS App Store and its
 strict review process to the Mac platform, but all the more insidious,
 since, to the average user the software distribution model hasn't
 changed. After all, you can still eschew the Mac App Store entirely
-and sideload .App packages downloaded from the internet as you
+and sideload .app packages downloaded from the internet as you
 please. At the same time though, Apple can revoke user access to that
 sideloaded software through a modification to their revocation server
 settings. This is really bad, and I'm confused why people accept it. I

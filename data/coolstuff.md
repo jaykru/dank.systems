@@ -2,17 +2,17 @@
 title: cool stuff
 ---
 
-here i'll link out to some sites, memes, and other stuff i'd like to
-share here. stay tuned. my memory is crummy, so beyond just sharing, i
-hope to use this as a way to remember where to find good content on
-the web.
+here i link out to some sites, memes, and other stuff i'd like to
+share.
 
 ## blogs worth reading
-- [drew devault](https://drewdevault.com/)
 - [bunnie huang](https://www.bunniestudios.com/)
 - [joey hess](https://joeyh.name/blog/)
 - [low-tech magazine](https://www.lowtechmagazine.com/)
-- did i miss you? [send](mailto:j@dank.systems) me your blog!
+- [gabriel kammer](https://kammer.xyz)
+- [moxie marlinspike](https://moxie.org/blog/)
+- [chuck dries](https://chuckdries.com/)
+- did i miss you? [send](/contact.html) me your blog!
 
 ## books i like
 - [combinatorics by peter j. cameron](https://www.amazon.com/Combinatorics-Techniques-Algorithms-Peter-Cameron/dp/0521457610)
@@ -25,6 +25,10 @@ i was assigned in my undergrad intro course. i recently learned of a
 [new book](http://people.reed.edu/~davidp/113/resources/113full_text.pdf)
 out of my department which looks neat. i'll be checking out the
 section on Catalan structures pretty soon.
+
+- [practical foundations of mathematics by paul taylor](https://www.paultaylor.eu/prafm/html/index.html)
+
+one for the ages.
 
 ## memes
 TODO

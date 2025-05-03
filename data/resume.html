@@ -217,7 +217,7 @@
             <h2>Skills</h2>
             <ul>
                 Reinforcement Learning • Diffusion models • LLMs • PyTorch • Julia • C++ • Python
-                <br> Formal Verification • Pure math • Coq • Rust • SystemVerilog • Common Lisp • Haskell • OCaml
+                <br> Formal Verification • Pure math • Rocq (née Coq) • Rust • SystemVerilog • Common Lisp • Haskell • OCaml
             </ul>
         </div>
 
@@ -253,7 +253,7 @@
             additions: 832,
             deletions: 451,
             categories: ["formal-methods", "ai"],
-            description: 'A mechanized partial correctness proof of the LTL <a href="https://www.cs.cmu.edu/~emc/papers/Papers%20In%20Refereed%20Journals/Bounded%20Model%20Checking%20Using%20Satisfiablility%20Solving.pdf">bounded model checking algorithm</a> in Coq'
+            description: 'A mechanized partial correctness proof of the LTL <a href="https://www.cs.cmu.edu/~emc/papers/Papers%20In%20Refereed%20Journals/Bounded%20Model%20Checking%20Using%20Satisfiablility%20Solving.pdf">bounded model checking algorithm</a> in Rocq (née Coq)'
         },
         {
             name: "torch-diffusion",
@@ -309,7 +309,7 @@
             additions: 829,
             deletions: 742,
             categories: ["formal-methods", "systems"],
-            description: "A Coq DSL for verified hardware design, originally developed at MIT and continued at SiFive"
+            description: "A Rocq (née Coq) DSL for verified hardware design, originally developed at MIT and continued at SiFive"
         },
         {
             name: "sifive/stdlibkami",
@@ -317,7 +317,7 @@
             additions: 2525,
             deletions: 2062,
             categories: ["formal-methods", "systems"],
-            description: "A library of formally specified and verified hardware components for RISC-V CPU designs in Kami, a Coq DSL for verified hardware design"
+            description: "A library of formally specified and verified hardware components for RISC-V CPU designs in Kami, a Rocq (née Coq) DSL for verified hardware design"
         },
         {
             name: "stlc-as2",
@@ -325,7 +325,7 @@
             additions: 1868,
             deletions: 1043,
             categories: ["formal-methods"],
-            description: "A mechanically-checked formal proof of type safety for the simply typed lambda calculus in Coq"
+            description: "A mechanically-checked formal proof of type safety for the simply typed lambda calculus in Rocq (née Coq)"
         }
     ];
 
@@ -399,6 +399,15 @@
             achievements: [
                 "Contributed to a type theory research project focused on a language modeling the core semantics of Rust and in particular its borrow-checker"
             ]
+        },
+        {
+            place: "The Charles Stark Draper Laboratory",
+            title: "Research Intern",
+            period: "Summer 2018",
+            category: "draper",
+            achievements: [
+                "Formal methods and computer security research for a project funded by the Office of Naval Research."
+            ]
         }
     ];
 
@@ -426,7 +435,7 @@
     }
 
     // Initial render with filtering
-    const displayed_experiences = filterExperiences(["tt", "intel", "sifive", "neu"], experiences);
+    const displayed_experiences = filterExperiences(["tt", "intel", "sifive", "neu", "draper"], experiences);
     renderExperiences(displayed_experiences);
     // Create and manage category checkboxes
     const experienceHeaderContainer = document.querySelector('.experience-header-container');

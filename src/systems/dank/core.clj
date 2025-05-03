@@ -8,7 +8,10 @@
             [systems.dank.outsta :as outsta]
             [clojure.core.async :as async]
             [clojure.java.io :as io]
-            [pantomime.mime :refer [mime-type-of]]))
+            [pantomime.mime :refer [mime-type-of]])
+  (:import [java.nio.file Files Paths]
+           [java.nio.file.attribute BasicFileAttributes]
+           [java.util.jar JarFile]))
 
 (def source-dir "data")
 
@@ -22,6 +25,20 @@
         html-data (stasis/slurp-directory src #".*\.html$")]
     (merge (zipmap md-html-paths md-html-content)
            html-data)))
+
+(defn get-posts [pages]
+  (filter (fn [[path _]] (re-find #"/posts/" path)) pages))
+
+(defn build-post-listing [pages]
+  (let [posts (get-posts pages)]
+      (hiccup/html5
+       (for [[uri post] posts]
+         (let [date (:date (:metadata post))
+               year (and date (+ 1900 (.getYear date)))
+               season (and date ({0 "Winter" 1 "Spring" 2 "Summer" 3 "Fall"} (int (Math/floor (/ (.getMonth date) 4)))))]
+         [:p [:a {:href uri} [:i (str season " " year)] " | " (:title (:metadata post))]
+             [:br]])
+         ))))
 
 (defn get-css [src]
   (stasis/slurp-directory src #".*\.css$"))
@@ -50,7 +67,8 @@
             [:div#logo [:b#jaykruer [:em "jay kruer"]]]
             [:a {:href "/index.html"} "home"]
             [:a {:href "/about.html"} "about"]
-            [:a {:href "/outsta.html"} "outsta"]
+          ;  [:a {:href "/outsta.html"} "outsta"]
+            [:a {:href "/posts.html"} "posts"]
             [:a {:href "/coolstuff.html"} "cool stuff"]
             [:a {:href "/contact.html"} "contact"]
             [:a {:href "/resume.html"} "resume"]]]]]
@@ -71,13 +89,25 @@
 (defn merge-website-assets! [source-dir]
   (let [raw-pages (conj (read-and-convert! source-dir)
                         (outsta/build-page))
-        page-map (format-pages raw-pages)
+        post-listing {"/posts.html" {:html (build-post-listing raw-pages)
+                                     :metadata {:title "posts"}}}
+        raw-pages-with-posts (conj raw-pages post-listing)
+        page-map (format-pages raw-pages-with-posts)
         css-map (get-css source-dir)]
     (stasis/merge-page-sources {:css css-map
                                 :pages page-map})))
 
-(def get-pages
-  (merge-website-assets! source-dir))
+(def *page-cache*
+  (atom {}))
+
+(defn get-pages []
+  (let [source-mtime (.lastModified (io/file source-dir))
+        cached-pages (@*page-cache* source-mtime)]
+    (if cached-pages
+      cached-pages
+      (let [new-pages (merge-website-assets! source-dir)]
+        (reset! *page-cache* {source-mtime new-pages})
+        new-pages))))
 
 ;; TODO: move to util
 (defn wrap-404 [wrapper handler]
@@ -130,3 +160,6 @@
 
 (def serve
   (site))
+
+;; (defonce server
+;;   (run-jetty serve {:port 3050 :join? false}))

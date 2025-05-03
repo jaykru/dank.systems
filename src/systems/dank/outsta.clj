@@ -44,7 +44,7 @@
           (reset! img-cache {}))))
     (:w @preferred-dims-state)))
 
-(set-preferred-dims! 1000 1000)
+(set-preferred-dims! 500 500)
 
 ;; collect resources for outstagram
 (s/def ::resource-asset-seq (s/* (s/keys :req-un [::path ::resource]

@@ -1,6 +1,7 @@
 ---
 title: why i won't attend your zoom meeting
 author: jay kruer
+date: 2020-11-14
 ---
 
 i wrote this as a quick explainer for members of the reed college
