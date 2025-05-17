@@ -67,7 +67,7 @@
             [:div#logo [:b#jaykruer [:em "jay kruer"]]]
             [:a {:href "/index.html"} "home"]
             [:a {:href "/about.html"} "about"]
-          ;  [:a {:href "/outsta.html"} "outsta"]
+            [:a {:href "/outsta.html"} "outsta"]
             [:a {:href "/posts.html"} "posts"]
             [:a {:href "/coolstuff.html"} "cool stuff"]
             [:a {:href "/contact.html"} "contact"]

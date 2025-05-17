@@ -550,7 +550,7 @@
             // Show the button again after capture
             downloadButton.style.display = 'block';
 
-            const imgData = canvas.toDataURL('image/png');
+            const imgData = canvas.toDataURL('image/jpeg', 0.99);
             const pdfWidth = 8.5; // inches
             const pdfHeight = 11; // inches
             const pdf = new jsPDF({
@@ -582,7 +582,7 @@
             }
 
 
-            pdf.addImage(imgData, 'PNG', offsetX, offsetY, finalWidth, finalHeight);
+            pdf.addImage(imgData, 'JPEG', offsetX, offsetY, finalWidth, finalHeight);
             pdf.save('jay_kruer_resume.pdf');
         }).catch(err => {
             console.error("Error generating PDF:", err);
